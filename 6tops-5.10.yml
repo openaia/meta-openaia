@@ -1,0 +1,52 @@
+# Copyright (c) 2023 Edgeble AI Technologies Pvt. Ltd.
+#
+# NCM6B-5.10 Kas
+#
+
+header:
+  version: 15
+
+machine: ncm6b-5.10
+
+target: core-image-full-cmdline
+
+repos:
+  meta-kas:
+
+  bitbake:
+    url: git://git.openembedded.org/bitbake
+    branch: master
+
+  openembedded-core:
+    url: git://git.openembedded.org/openembedded-core
+    branch: kirkstone
+    layers:
+      meta:
+
+  meta-arm:
+    url: git://git.yoctoproject.org/meta-arm
+    branch: kirkstone
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+  meta-openembedded:
+    url: git://git.openembedded.org/meta-openembedded
+    branch: kirkstone
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+
+  meta-rockchip:
+    url: git://git.yoctoproject.org/meta-rockchip
+    branch: kirkstone
+
+bblayers_conf_header:
+  standard: |
+    POKY_BBLAYERS_CONF_VERSION = "2"
+    BBPATH = "${TOPDIR}"
+    BBFILES ?= ""
+local_conf_header:
+  custom: |
+    AUTHOR = "Jagan Teki"
